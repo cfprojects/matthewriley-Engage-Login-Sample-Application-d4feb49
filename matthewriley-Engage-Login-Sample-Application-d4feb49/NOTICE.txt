@@ -1,0 +1,5 @@
+Engage Login Sample Application
+
+Copyright 2010 MW Riley Consulting LLC
+
+Engage is a service of Janrain. For more information about Janrain Engage please visit: http://www.janrain.com/products/engage

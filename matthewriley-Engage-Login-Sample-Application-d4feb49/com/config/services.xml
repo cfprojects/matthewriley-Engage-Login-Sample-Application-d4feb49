@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2010 MW Riley Consulting LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<beans>
+    <!-- SHARED BEANS -->
+	<bean id="customer" class="com.model.customer.customer" singleton="true" lazy-init="true" autowire="no" />
+
+    <!-- DAO BEANS -->
+	<bean id="customerDAO" class="com.model.customer.customerDAO" singleton="true" lazy-init="true" autowire="no">
+		<constructor-arg name="dsn"><value>${sqlDsn}</value></constructor-arg>
+	</bean>
+
+    <!-- MANAGER BEANS -->
+	<bean id="customerManager" class="com.model.customer.customerManager" singleton="true" lazy-init="true" autowire="no">
+		<constructor-arg name="customer"><ref bean="customer"/></constructor-arg>
+		<constructor-arg name="customerDAO"><ref bean="customerDAO"/></constructor-arg>
+	</bean>
+	
+	<bean id="engage" class="com.model.janrain.engage" singleton="true" lazy-init="true" autowire="no">
+		<constructor-arg name="apiKey"><value>${apiKey}</value></constructor-arg>
+	</bean>
+
+</beans>
